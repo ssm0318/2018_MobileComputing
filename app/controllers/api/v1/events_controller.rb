@@ -24,15 +24,15 @@ module Api
             end
         
             def destroy
-                event.destroy
-                render json: {status: 'SUCCESS', message:'Deleted event', data: event},status: :ok
+                @event.destroy
+                render json: {status: 'SUCCESS', message:'Deleted event', data: @event},status: :ok
             end
         
             def update
-                if event.update_attributes(event_params)
-                    render json: {status: 'SUCCESS', message:'Updated event', data: event}, status: :ok
+                if @event.update_attributes(event_params)
+                    render json: {status: 'SUCCESS', message:'Updated event', data: @event}, status: :ok
                 else
-                    render json: {status: 'ERROR', message:'Event not updated', data: event.errors.full_messages}, status: :unprocessable_entity
+                    render json: {status: 'ERROR', message:'Event not updated', data: @event.errors.full_messages}, status: :unprocessable_entity
                 end
             end
 
