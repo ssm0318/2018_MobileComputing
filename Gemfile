@@ -7,6 +7,11 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'pry', '~> 0.12.0'
+gem 'pry-rails', '~> 0.3.4'
+gem 'rails_db', '~> 2.0', '>= 2.0.4'
+gem 'faker', '~> 1.9', '>= 1.9.1'
+gem 'devise', '~> 4.5'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
