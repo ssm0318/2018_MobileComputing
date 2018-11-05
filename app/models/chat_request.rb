@@ -1,0 +1,2 @@
+class ChatRequest < ApplicationRecord
+end
