@@ -1,0 +1,2 @@
+class EventWaiting < ApplicationRecord
+end
