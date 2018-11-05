@@ -1,3 +1,12 @@
+Rails.application.config.to_prepare do              # to_prepare ensures that the monkey patching happens before the first request
+  Devise::OmniauthCallbacksController.class_eval do # reopen the class
+    def failure                                     # redefine the failure method
+      set_flash_message! :alert, :failure, kind: OmniAuth::Utils.camelize(failed_strategy.name), reason: failure_message
+      redirect_to after_omniauth_failure_path_for(resource_name)
+    end
+  end
+end
+
 # frozen_string_literal: true
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
@@ -9,6 +18,8 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'f84fecc7f56b3d9188604eae2c594c6d8d14ad65b6ac4f7d700dae239ca42be799bc8ceefaa148a099b7b20269446c8dc0a4d66465f4284c7fa477fdf829caa0'
+
+  config.navigational_formats = [:json]
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
