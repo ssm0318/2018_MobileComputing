@@ -8,6 +8,15 @@ module Api
                     render json: {status: 'ERROR', message:'Profile not updated', data: @profile.errors.full_messages}, status: :unprocessable_entity
                 end
             end
+
+            def index
+                @profiles = Profile.order('created_at DESC')
+                render json: {status: 'SUCCESS', message:'Loaded events', data: @profiles}, status: :ok
+            end
+        
+            def show
+                render json: {status: 'SUCCESS', message:'Loaded event', data: @user}, status: :ok
+            end
         
             private
                 def set_user

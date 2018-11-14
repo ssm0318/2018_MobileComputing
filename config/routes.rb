@@ -4,7 +4,9 @@ Rails.application.routes.draw do
  namespace 'api' do
     namespace 'v1' do
       resources :events
-      patch '/users/profile/:id/edit' => 'profiles#update', as: :profile_update
+      get '/profiles' => 'profiles#index'
+      get '/profiles/:id' => 'profiles#show'
+      patch '/profiles/:id/edit' => 'profiles#update', as: :profile_update
       get '/search' => 'events#search', as: :search, defaults: { format: :csv }
     end
   end
