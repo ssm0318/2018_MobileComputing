@@ -1,12 +1,3 @@
-Rails.application.config.to_prepare do              # to_prepare ensures that the monkey patching happens before the first request
-  Devise::OmniauthCallbacksController.class_eval do # reopen the class
-    def failure                                     # redefine the failure method
-      set_flash_message! :alert, :failure, kind: OmniAuth::Utils.camelize(failed_strategy.name), reason: failure_message
-      redirect_to after_omniauth_failure_path_for(resource_name)
-    end
-  end
-end
-
 # frozen_string_literal: true
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
@@ -17,9 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'f84fecc7f56b3d9188604eae2c594c6d8d14ad65b6ac4f7d700dae239ca42be799bc8ceefaa148a099b7b20269446c8dc0a4d66465f4284c7fa477fdf829caa0'
-
-  config.navigational_formats = [:json]
+  # config.secret_key = 'd3fd6444a3f2fae216d5a86de38ab37d4099c02d11eeddd730ed554c71b6ad64fb26b7fbf4ec1afa3abc38f704ffe256e5b0cd5a59d70fae173cdf283fc369b4'
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -125,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '35f211c0ee5ebb3cc1354c55fefff34dad7cae2c8dc5407f1a028235099763edfd46afed95ac9e54a8e6afc830f787cf33c194ff0817a46771cea538399bed97'
+  # config.pepper = '67655459d6ad459fb17efc9df0e4c4eceeccf746ffbaf5610ed1892ed910dc0e8b3de690d269852c81e919a61b9abdd1a981504876055cce8cd47115f33c6d09'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false

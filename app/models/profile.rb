@@ -8,7 +8,7 @@ class Profile < ApplicationRecord
     private
   
     def add_default_profile_pic
-      random = rand(1..6)
+      random = rand(1..5)
       self.profile_pic = Rails.root.join("app/assets/images/profile" + random.to_s + ".png").open
       self.save!
     end
