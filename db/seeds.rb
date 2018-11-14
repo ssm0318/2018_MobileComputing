@@ -12,14 +12,14 @@ for i in 1..5
 end
 
 # Events
-Event.create(host_id: 1, title: Faker::HarryPotter.spell) #1
-Event.create(host_id: 1, title: Faker::HarryPotter.spell) #2
-Event.create(host_id: 1, title: Faker::HarryPotter.spell) #3
-Event.create(host_id: 2, title: Faker::HarryPotter.spell) #4
-Event.create(host_id: 2, title: Faker::HarryPotter.spell) #5
-Event.create(host_id: 3, title: Faker::HarryPotter.spell) #6
-Event.create(host_id: 3, title: Faker::HarryPotter.spell) #7
-Event.create(host_id: 3, title: Faker::HarryPotter.spell) #8
+Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #1
+Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #2
+Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #3
+Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #4
+Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #5
+Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #6
+Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #7
+Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #8
 
 # Event Requests
 EventRequest.create(event_id: 1, requester_id: 2)

@@ -5,6 +5,8 @@ class Profile < ApplicationRecord
 
     after_create :add_default_profile_pic
 
+    scope :search_profile, -> (keyword) { joins(:tags).where("content LIKE ? ", "%#{keyword}%") }
+
     private
   
     def add_default_profile_pic

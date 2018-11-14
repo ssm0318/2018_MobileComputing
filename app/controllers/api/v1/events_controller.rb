@@ -1,11 +1,11 @@
 module Api
     module V1 
         class EventsController < ApplicationController
-            before_action :authenticate_user!, except: [:index, :show]
+            before_action :authenticate_user!, except: [:index, :show, :search]
             before_action :set_event, only: [:show, :update, :destroy]
 
             def index
-                @events = Event.order('created_at DESC');
+                @events = Event.order('created_at DESC')
                 render json: {status: 'SUCCESS', message:'Loaded events', data: @events}, status: :ok
             end
         
@@ -34,6 +34,21 @@ module Api
                 else
                     render json: {status: 'ERROR', message:'Event not updated', data: @event.errors.full_messages}, status: :unprocessable_entity
                 end
+            end
+
+            def search
+                @keyword = params[:keyword]
+                eventSearch = Event.order('created_at DESC')
+                profileSearch = Profile.order('created_at DESC')
+                eventSearch = eventSearch.search_event(@keyword).distinct if @keyword.present?
+                profileSearch = profileSearch.search_profile(@keyword).distinct if @keyword.present?
+                if @keyword.present?
+                    results = eventSearch | profileSearch
+                else 
+                    results = eventSearch
+                end
+
+                render json: {status: 'SUCCESS', message:'search results', data: results}, status: :ok
             end
 
             private
