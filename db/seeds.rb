@@ -69,7 +69,7 @@ Follow.create(follower_id: 4, followed_id: 1)
 # Tags
 for i in 1..5
     5.times do
-        User.find(i).profile.tags << Tag.create(content: Faker::SiliconValley.company)
+        User.find(i).profile.tags << Tag.create(profile_id: i, content: Faker::SiliconValley.company)
     end
 end
 

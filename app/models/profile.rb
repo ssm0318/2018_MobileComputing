@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
     mount_uploader              :profile_pic, ProfilePicUploader
-    has_and_belongs_to_many     :tags
+    has_and_belongs_to_many     :tags, dependent: :destroy
     belongs_to                  :user
 
     after_create :add_default_profile_pic
