@@ -9,6 +9,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'omniauth-kakao'
 gem 'pg', '~> 1.1', '>= 1.1.3'
 gem 'pry', '~> 0.12.0'
 gem 'pry-rails', '~> 0.3.4'
