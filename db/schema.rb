@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181114172829) do
+ActiveRecord::Schema.define(version: 20181117174914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,13 +56,14 @@ ActiveRecord::Schema.define(version: 20181114172829) do
     t.string "title", null: false
     t.text "description"
     t.string "location"
-    t.float "longitude"
-    t.float "latitude"
+    t.float "event_longitude"
+    t.float "event_latitude"
     t.string "chatlink"
     t.boolean "hosted"
     t.boolean "reviewed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_longitude", "event_latitude"], name: "index_events_on_event_longitude_and_event_latitude"
     t.index ["host_id"], name: "index_events_on_host_id"
   end
 
@@ -95,12 +96,13 @@ ActiveRecord::Schema.define(version: 20181114172829) do
     t.text "description"
     t.integer "tag_id"
     t.string "address"
-    t.float "longitude"
-    t.float "latitude"
+    t.float "profile_longitude"
+    t.float "profile_latitude"
     t.boolean "isVerified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_pic"
+    t.index ["profile_longitude", "profile_latitude"], name: "index_profiles_on_profile_longitude_and_profile_latitude"
     t.index ["tag_id"], name: "index_profiles_on_tag_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

@@ -8,7 +8,7 @@ User.create(email: "e@e.com", password: "eeeeee", username: "electricity")
 # Profiles
 for i in 1..5
     Profile.create({ user_id: i, name: Faker::Friends.character, age: rand(18...33), description: Faker::FamousLastWords.last_words,
-                    address: Faker::Address.city, longitude: Faker::Address.longitude, latitude: Faker::Address.latitude, isVerified: false })
+                    address: Faker::Address.city, profile_longitude: Faker::Address.longitude, profile_latitude: Faker::Address.latitude, isVerified: false })
 end
 
 # Events
