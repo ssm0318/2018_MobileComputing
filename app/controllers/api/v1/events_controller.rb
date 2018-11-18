@@ -38,15 +38,9 @@ module Api
 
             def search
                 @keyword = params[:keyword]
+                # @location = params[:location]
                 eventSearch = Event.order('created_at DESC')
-                profileSearch = Profile.order('created_at DESC')
                 eventSearch = eventSearch.search_event(@keyword).distinct if @keyword.present?
-                profileSearch = profileSearch.search_profile(@keyword).distinct if @keyword.present?
-                if @keyword.present?
-                    results = eventSearch | profileSearch
-                else 
-                    results = eventSearch
-                end
 
                 render json: {status: 'SUCCESS', message:'search results', data: results}, status: :ok
             end

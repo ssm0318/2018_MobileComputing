@@ -17,6 +17,15 @@ module Api
             def show
                 render json: {status: 'SUCCESS', message:'Loaded event', data: @user}, status: :ok
             end
+
+            def search
+                @keyword = params[:keyword]
+                @location = params[:location]
+                profileSearch = Profile.order('created_at DESC')
+                profileSearch = profileSearch.search_profile(@keyword).distinct if @keyword.present?
+
+                render json: {status: 'SUCCESS', message:'search results', data: profileSearch}, status: :ok
+            end
         
             private
                 def set_user
