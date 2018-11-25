@@ -1,6 +1,8 @@
 module Api
     module V1
-        class ProfilesController < ApplicationController                    
+        class ProfilesController < ApplicationController    
+            before_action :set_user, only: [:show, :update]
+            
             def update
                 if @profile.update_attributes(profile_params)
                     render json: {status: 'SUCCESS', message:'Updated profile', data: @profile}, status: :ok
