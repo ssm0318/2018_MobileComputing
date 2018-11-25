@@ -17,7 +17,8 @@ module Api
             end
         
             def show
-                render json: {status: 'SUCCESS', message:'Loaded event', data: @user.profile}, status: :ok
+                response = {:profile => @user.profile, :tags => @user.profile.tags, :profile_pic_url => @user.profile.profile_pic.url}
+                render json: {status: 'SUCCESS', message:'Loaded event', data: response}, status: :ok
             end
 
             def search
