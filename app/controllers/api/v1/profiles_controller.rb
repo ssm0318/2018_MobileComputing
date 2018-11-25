@@ -15,7 +15,7 @@ module Api
             end
         
             def show
-                render json: {status: 'SUCCESS', message:'Loaded event', data: @user}, status: :ok
+                render json: {status: 'SUCCESS', message:'Loaded event', data: @user.profile}, status: :ok
             end
 
             def search
