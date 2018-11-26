@@ -13,12 +13,12 @@ module Api
 
             def index
                 @profiles = Profile.order('created_at DESC')
-                render json: {status: 'SUCCESS', message:'Loaded events', data: @profiles}, status: :ok
+                render 'profiles/index.json'
             end
         
             def show
-                response = {:profile => @user.profile, :tags => @user.profile.tags, :profile_pic_url => @user.profile.profile_pic.url}
-                render json: {status: 'SUCCESS', message:'Loaded event', data: response}, status: :ok
+                @profile = @user.profile
+                render 'profiles/show.json'
             end
 
             def search
