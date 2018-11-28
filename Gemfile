@@ -11,7 +11,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'omniauth'
 # gem 'omniauth-kakao'
-gem 'pg', '~> 1.1', '>= 1.1.3'
+# gem 'pg', '~> 1.1', '>= 1.1.3'
 gem 'pry', '~> 0.12.0'
 gem 'pry-rails', '~> 0.3.4'
 gem 'faker', '~> 1.9', '>= 1.9.1'
@@ -37,7 +37,7 @@ gem 'rack-cors' #enables cross-origin resource sharing
 # gem 'rack-cors'
 
 group :development, :test do
-  # gem 'sqlite3'
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -49,10 +49,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-# group :production do
-#   gem 'pg', '~> 1.1', '>= 1.1.3'
-# end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

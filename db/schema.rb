@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181117174914) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20181128132254) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -59,7 +56,7 @@ ActiveRecord::Schema.define(version: 20181117174914) do
     t.float "event_longitude"
     t.float "event_latitude"
     t.string "chatlink"
-    t.boolean "hosted"
+    t.datetime "hosted"
     t.boolean "reviewed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
