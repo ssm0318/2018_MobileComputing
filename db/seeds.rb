@@ -12,14 +12,14 @@ for i in 1..5
 end
 
 # Events
-Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #1
+Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all)) #1
 Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #2
-Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #3
+Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all)) #3
 Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #4
-Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #5
+Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all)) #5
 Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #6
 Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #7
-Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #8
+Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all)) #8
 
 # Event Requests
 EventRequest.create(event_id: 1, requester_id: 2)
