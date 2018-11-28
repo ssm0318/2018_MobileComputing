@@ -30,5 +30,11 @@ json.past_events @profile.user.events do |event|
         json.event_reviewed event.reviewed
     end
 end
+json.reviews @profile.user.received_reviews do |review|
+    json.reviewed_by review.author.profile.name
+    json.reviewer_profile_pic @profile.profile_pic.url
+    json.rating review.rating
+    json.content review.content
+end
 
 # https://www.pluralsight.com/guides/handling-file-upload-using-ruby-on-rails-5-api
