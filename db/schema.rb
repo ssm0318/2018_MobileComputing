@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181128132254) do
+ActiveRecord::Schema.define(version: 20181129083540) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20181128132254) do
     t.float "event_latitude"
     t.string "chatlink"
     t.datetime "hosted"
-    t.boolean "reviewed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_longitude", "event_latitude"], name: "index_events_on_event_longitude_and_event_latitude"
@@ -99,6 +98,10 @@ ActiveRecord::Schema.define(version: 20181128132254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_pic"
+    t.string "gender"
+    t.string "language"
+    t.index ["gender"], name: "index_profiles_on_gender"
+    t.index ["language"], name: "index_profiles_on_language"
     t.index ["profile_longitude", "profile_latitude"], name: "index_profiles_on_profile_longitude_and_profile_latitude"
     t.index ["tag_id"], name: "index_profiles_on_tag_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
@@ -112,7 +115,6 @@ ActiveRecord::Schema.define(version: 20181128132254) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "event_id"
     t.integer "host_id", null: false
     t.integer "author_id", null: false
     t.float "rating"
@@ -120,7 +122,6 @@ ActiveRecord::Schema.define(version: 20181128132254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_reviews_on_author_id"
-    t.index ["event_id"], name: "index_reviews_on_event_id"
     t.index ["host_id"], name: "index_reviews_on_host_id"
   end
 

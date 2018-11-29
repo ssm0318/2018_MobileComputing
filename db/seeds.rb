@@ -6,20 +6,32 @@ User.create(email: "d@d.com", password: "dddddd", username: "deer")
 User.create(email: "e@e.com", password: "eeeeee", username: "electricity")
 
 # Profiles
+genders = ["F", "M"]
+languages = ["Korean", "English", "Mandarin Chinese", "Hindi", "Spanish", "Arabic", "French", "Malay", "Russian", "German", "Japanese", "Turkish", "Vietnamese", "Thai"]
+chooseBool = [true, false]
 for i in 1..5
     Profile.create({ user_id: i, name: Faker::Friends.character, age: rand(18...33), description: Faker::FamousLastWords.last_words,
-                    address: Faker::Address.city, profile_longitude: Faker::Address.longitude, profile_latitude: Faker::Address.latitude, isVerified: false })
+                    address: Faker::Address.city, profile_longitude: Faker::Address.longitude, profile_latitude: Faker::Address.latitude, isVerified: chooseBool.sample,
+                    gender: genders.sample, language: languages.sample })
 end
 
 # Events
-Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all)) #1
-Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #2
-Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all)) #3
-Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #4
-Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all)) #5
-Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #6
-Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote) #7
-Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all)) #8
+Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all),
+            event_longitude: Faker::Address.longitude, event_latitude: Faker::Address.latitude, chatlink: "https://open.kakao.com/o/gxCoVV5") #1
+Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, chatlink: "https://open.kakao.com/o/g6UzVV5",
+            event_longitude: Faker::Address.longitude, event_latitude: Faker::Address.latitude) #2
+Event.create(host_id: 1, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all),
+            event_longitude: Faker::Address.longitude, event_latitude: Faker::Address.latitude, chatlink: "https://open.kakao.com/o/gyzKVV5") #3
+Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, chatlink: "https://open.kakao.com/o/gguSVV5",
+            event_longitude: Faker::Address.longitude, event_latitude: Faker::Address.latitude) #4
+Event.create(host_id: 2, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all),
+            event_longitude: Faker::Address.longitude, event_latitude: Faker::Address.latitude, chatlink: "https://open.kakao.com/o/gOp2VV5") #5
+Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, chatlink: "https://open.kakao.com/o/gb7iWV5",
+            event_longitude: Faker::Address.longitude, event_latitude: Faker::Address.latitude) #6
+Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, chatlink: "https://open.kakao.com/o/gu4sWV5",
+            event_longitude: Faker::Address.longitude, event_latitude: Faker::Address.latitude) #7
+Event.create(host_id: 3, title: Faker::HarryPotter.spell, description: Faker::HarryPotter.quote, hosted: Faker::Time.between(20.days.ago, Date.today, :all),
+            event_longitude: Faker::Address.longitude, event_latitude: Faker::Address.latitude, chatlink: "https://open.kakao.com/o/gCyAWV5") #8
 
 # Event Requests
 EventRequest.create(event_id: 1, requester_id: 2)
@@ -68,7 +80,7 @@ Follow.create(follower_id: 4, followed_id: 1)
 
 # Tags
 for i in 1..5
-    5.times do
+    rand(1...10).times do
         User.find(i).profile.tags << Tag.create(profile_id: i, content: Faker::SiliconValley.company)
     end
 end
