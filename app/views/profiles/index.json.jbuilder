@@ -20,7 +20,6 @@ json.profiles @profiles do |profile|
             json.event_location event.location
             json.event_chatlink event.chatlink
             json.event_isHosted event.hosted
-            json.event_reviewed event.reviewed
         end
     end
     json.past_events profile.user.events do |event|
@@ -31,7 +30,6 @@ json.profiles @profiles do |profile|
             json.event_location event.location
             json.event_chatlink event.chatlink
             json.event_isHosted event.hosted
-            json.event_reviewed event.reviewed
         end
     end
     json.reviews profile.user.received_reviews do |review|

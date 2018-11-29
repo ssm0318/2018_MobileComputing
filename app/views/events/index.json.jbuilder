@@ -5,7 +5,6 @@ json.events @events do |event|
     json.location event.location
     json.chatlink event.chatlink
     json.hosted event.hosted
-    json.reviewed event.reviewed
     json.host_profile do
         json.host_id event.host.profile.id
         json.host_name event.host.profile.name
