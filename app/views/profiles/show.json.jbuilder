@@ -1,4 +1,4 @@
-
+json.id @profile.id
 json.name @profile.name
 json.age @profile.age
 json.description @profile.description
@@ -12,6 +12,7 @@ json.profile_pic @profile.profile_pic.url
 json.isVerified @profile.isVerified
 json.future_events @profile.user.events do |event|
     if event.hosted.nil?
+        json.event_id event.id
         json.event_title event.title
         json.event_description event.description
         json.event_location event.location
@@ -22,6 +23,7 @@ json.future_events @profile.user.events do |event|
 end
 json.past_events @profile.user.events do |event|
     if !event.hosted.nil?
+        json.event_id event.id
         json.event_title event.title
         json.event_description event.description
         json.event_location event.location

@@ -6,11 +6,11 @@ module Api
 
             def index
                 @events = Event.order('created_at DESC')
-                render json: {status: 'SUCCESS', message:'Loaded events', data: @events}, status: :ok
+                render 'events/index.json'
             end
         
             def show
-                render json: {status: 'SUCCESS', message:'Loaded event', data: @event}, status: :ok
+                render 'events/show.json'
             end
         
             def create
