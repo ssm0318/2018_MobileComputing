@@ -1,16 +1,22 @@
 <%= form_tag(register_infoget_path, :class => 'ui large form col s12') do %>
-  <% if @user.email.nil? or @user.email == '' %>
+  <% if @user.nickname.nil? or @user.nickname == '' %>
   <div class="ui raised segment">
     <div class="ui field">
       <label for="nickname" class="ui left aligned header" >nickname</label>
       <%= text_field_tag :nickname, nil, placeholder: "Zee" %>
     </div>
-  <% end %>
-
     <div class="ui form">
       <%= submit_tag "Submit", :class => 'ui fluid large yellow submit button' %>
-<% end %>
     </div>
+  <% else %>
+    <div class="ui form">
+      <%= submit_tag "Enter", :class => 'ui fluid large yellow submit button' %>
+    </div>
+  <% end %>
+
+    
+<% end %>
+
   </div>
 
 <script>

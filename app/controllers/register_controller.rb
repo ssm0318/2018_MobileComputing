@@ -6,8 +6,10 @@ class RegisterController < ApplicationController
   end
 
   def infoget
-    @user.nickname = params[:nickname]
-    @user.save
+    if @user.nickname.nil?
+      @user.nickname = params[:nickname]
+      @user.save
+    end
     redirect_to visitor_main_path
   end
 
