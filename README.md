@@ -9,15 +9,16 @@ This is a Rails API-only application. Most responses require parameters to be pa
 Ruby Version: 2.4.3 / 
 Rails Version: 5.1.6
 
-Run the following code. Then navigate to```http://localhost:3000/```.
+Run the following code.
 ```ruby
 rails db:migrate
 rails db:seed
 rails s
 ```
+Host: ```http://localhost:3000/```
 
 ### Testing on the Web(?)
-Navigate to http://18.221.77.15/ instead.
+Host: http://18.221.77.15/ 
 
 ### Tests
 Viewing the responses using a Json parser may be helpful. ```http://json.parser.online.fr/```
@@ -25,6 +26,6 @@ Viewing the responses using a Json parser may be helpful. ```http://json.parser.
 Number | URL | Parameters | Method | Response
 --- | --- | --- | --- | ---
 1 | /api/v1/profiles | N/A | GET | profiles of all users
-2 | /api/v1/profiles/:id | id (int) of user data to be displayed | GET | profile of a specific user
+2 | /api/v1/profiles/:id | id(int) of user data to be displayed | GET | profile of a specific user
 3 | /api/v1/events | N/A | GET | info on all events
 4 | /api/v1/profiles/:id | id(int) of event data to be displayed | GET | info on a specific event 
