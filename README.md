@@ -38,4 +38,14 @@ Number | URL | Parameters | Method | Response
 5 | /register/info | N/A | GET | sign in (existing user)/up (new user)
 6 | /visitor/main | N/A | GET | sign out (if signed in)
 
-### Tests - Sub Functionalities
+### Tests - Sub Functionalities (Events)
+Number | URL | Parameters | Method | Response
+--- | --- | --- | --- | ---
+1 | /api/v1/events | event parameters | POST | create new event
+2 | /api/v1/events/:id/ | ID(int) of event, event parameters | PATCH | update specific event
+3 | /api/v1/events/request/:event_id/:requester_id/ | ID(int) of event and requester | GET | make a request to join event (sign in required)
+
+### Tests - Sub Functionalities (Users)
+Number | URL | Parameters | Method | Response
+--- | --- | --- | --- | ---
+1 | /api/v1/profiles/:id/edit | ID(int) of profile, profile parameters | PATCH | update profile of specific user

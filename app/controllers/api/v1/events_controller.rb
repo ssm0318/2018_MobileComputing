@@ -45,6 +45,14 @@ module Api
                 render json: {status: 'SUCCESS', message:'search results', data: results}, status: :ok
             end
 
+            def event_request
+                event_id = params[:event_id]
+                requester_id = params[:requester_id]
+                er = EventRequest.create(event_id: event_id, requester_id: requester_id)
+
+                render json: {status: 'SUCCESS', message: 'event request', data: er}, status: :ok
+            end
+
             private
                 def set_event
                     @event = Event.find(params[:id])

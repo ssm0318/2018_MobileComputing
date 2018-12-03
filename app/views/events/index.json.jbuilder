@@ -16,11 +16,11 @@ json.events @events do |event|
         json.host_address event.host.profile.address
         json.profile_longitude event.host.profile.profile_longitude
         json.profile_latitude event.host.profile.profile_latitude
-        json.profile_pic event.host.profile.profile_pic.url
+        json.profile_pic event.host.profile.profile_pic
         json.host_isVerified event.host.profile.isVerified
         json.host_reviews event.host.profile.user.received_reviews do |review|
             json.reviewed_by review.author.profile.name
-            json.reviewer_profile_pic review.author.profile.profile_pic.url
+            json.reviewer_profile_pic review.author.profile.profile_pic
             json.rating review.rating
             json.content review.content
         end

@@ -36,7 +36,7 @@ module Api
                 end
         
                 def profile_params
-                    params.require(:user).permit(:id, :user_id, :name, :age, :description, :tag, :address, :longitude, :latitude, :profile_pic, :isVerified)
+                    params.require(:user).permit(:id, :user_id, :name, :age, :description, :tag, :address, :profile_longitude, :profile_latitude, :profile_pic, :isVerified)
                 end
         end
     end

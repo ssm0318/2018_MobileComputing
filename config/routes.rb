@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get '/profiles/:id' => 'profiles#show'
       patch '/profiles/:id/edit' => 'profiles#update', as: :profile_update
       get '/events/search' => 'events#search', as: :search, defaults: { format: :csv }
+      get '/events/request/:event_id/:requester_id' => 'events#event_request'
       # get '/profiles/search' => 'profiles#search', as: :search, defaults: { format: :csv }
     end
   end
