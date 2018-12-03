@@ -9,9 +9,13 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-# gem 'omniauth'
-# gem 'omniauth-kakao'
-# gem 'pg', '~> 1.1', '>= 1.1.3'
+gem 'turbolinks',  '~> 5'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'omniauth'
+gem 'omniauth-kakao', :git => 'https://github.com/hcn1519/omniauth-kakao'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
 gem 'pry', '~> 0.12.0'
 gem 'pry-rails', '~> 0.3.4'
 gem 'faker', '~> 1.9', '>= 1.9.1'

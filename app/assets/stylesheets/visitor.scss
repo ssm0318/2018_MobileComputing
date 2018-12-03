@@ -1,0 +1,18 @@
+body > .nicForm {
+    height: 100% !important;
+  }
+  .nicImage {
+    margin-top: -100px;
+  }
+  @media(min-width: 450px){
+    .nicColumn {
+    width: 100% !important;
+    max-width: 450px;
+    }
+  }
+  @media(max-width: 449px){
+    .nicColumn {
+    width: 100% !important;
+    max-width: 350px;
+    }
+  }

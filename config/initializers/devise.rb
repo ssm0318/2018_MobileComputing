@@ -9,7 +9,8 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'd3fd6444a3f2fae216d5a86de38ab37d4099c02d11eeddd730ed554c71b6ad64fb26b7fbf4ec1afa3abc38f704ffe256e5b0cd5a59d70fae173cdf283fc369b4'
-  
+  config.omniauth :kakao, ENV["Kakao_Key"], :redirect_path => "/users/auth/kakao/callback"
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'

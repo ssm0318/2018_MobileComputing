@@ -1,9 +1,9 @@
 # Users
-User.create(email: "a@a.com", password: "aaaaaa", username: "apple")
-User.create(email: "b@b.com", password: "bbbbbb", username: "banana")
-User.create(email: "c@c.com", password: "cccccc", username: "carrot")
-User.create(email: "d@d.com", password: "dddddd", username: "deer")
-User.create(email: "e@e.com", password: "eeeeee", username: "electricity")
+User.create(email: "a@a.com", password: "aaaaaa", nickname: "apple")
+User.create(email: "b@b.com", password: "bbbbbb", nickname: "banana")
+User.create(email: "c@c.com", password: "cccccc", nickname: "carrot")
+User.create(email: "d@d.com", password: "dddddd", nickname: "deer")
+User.create(email: "e@e.com", password: "eeeeee", nickname: "electricity")
 
 # Profiles
 genders = ["F", "M"]
@@ -12,7 +12,7 @@ chooseBool = [true, false]
 for i in 1..5
     Profile.create({ user_id: i, name: Faker::Friends.character, age: rand(18...33), description: Faker::FamousLastWords.last_words,
                     address: Faker::Address.city, profile_longitude: Faker::Address.longitude, profile_latitude: Faker::Address.latitude, isVerified: chooseBool.sample,
-                    gender: genders.sample, language: languages.sample })
+                    gender: genders.sample, language: languages.sample, profile_pic: Rails.root.join("app/assets/images/profile" + i.to_s + ".png").open })
 end
 
 # Events
@@ -73,10 +73,10 @@ Review.create(host_id: 2, author_id: 1, rating: rand(1...6), content: Faker::Sim
 Review.create(host_id: 3, author_id: 5, rating: rand(1...6), content: Faker::Simpsons.quote)
 
 # Follows
-Follow.create(follower_id: 1, followed_id: 2)
-Follow.create(follower_id: 1, followed_id: 4)
-Follow.create(follower_id: 2, followed_id: 1)
-Follow.create(follower_id: 4, followed_id: 1)
+Follow.create(follower_id: 1, following_id: 2)
+Follow.create(follower_id: 1, following_id: 4)
+Follow.create(follower_id: 2, following_id: 1)
+Follow.create(follower_id: 4, following_id: 1)
 
 # Tags
 for i in 1..5

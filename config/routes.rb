@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users, defaults: { format: :json }
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
- namespace 'api' do
+  root 'visitor#main'
+  get 'register/info'
+  get 'visitor/main'
+  post 'register/infoget'
+
+  devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registrations: "user/registrations", sessions: 'user/sessions' }
+
+  namespace 'api' do
     namespace 'v1' do
       resources :events
       get '/profiles' => 'profiles#index'

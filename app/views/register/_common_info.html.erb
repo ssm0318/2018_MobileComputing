@@ -1,0 +1,20 @@
+<%= form_tag(register_infoget_path, :class => 'ui large form col s12') do %>
+  <% if @user.email.nil? or @user.email == '' %>
+  <div class="ui raised segment">
+    <div class="ui field">
+      <label for="nickname" class="ui left aligned header" >nickname</label>
+      <%= text_field_tag :nickname, nil, placeholder: "Zee" %>
+    </div>
+  <% end %>
+
+    <div class="ui form">
+      <%= submit_tag "Submit", :class => 'ui fluid large yellow submit button' %>
+<% end %>
+    </div>
+  </div>
+
+<script>
+  $(document).ready(function(){
+    $('.ui.radio.checkbox').checkbox();
+  });
+</script> 
