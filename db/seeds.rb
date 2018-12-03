@@ -51,14 +51,12 @@ EventRequest.create(event_id: 4, requester_id: 4)
 EventRequest.create(event_id: 6, requester_id: 2)
 EventRequest.create(event_id: 7, requester_id: 1)
 
-# Event Waitings 
-EventWaiting.create(event_id: 1, waiter_id: 3)
-EventWaiting.create(event_id: 2, waiter_id: 3)
-EventWaiting.create(event_id: 3, waiter_id: 4)
-EventWaiting.create(event_id: 4, waiter_id: 1)
-EventWaiting.create(event_id: 5, waiter_id: 3)
-
 # Event Attendings
+EventAttending.create(event_id: 1, user_id: 3)
+EventAttending.create(event_id: 2, user_id: 3)
+EventAttending.create(event_id: 3, user_id: 4)
+EventAttending.create(event_id: 4, user_id: 1)
+EventAttending.create(event_id: 5, user_id: 3)
 EventAttending.create(event_id: 1, user_id: 5)
 EventAttending.create(event_id: 3, user_id: 2)
 EventAttending.create(event_id: 4, user_id: 4)
