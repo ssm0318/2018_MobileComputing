@@ -1,24 +1,25 @@
-# README
+# Help to Help - Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is developed by Ekatrina Levchenko, JaeWon Kim, Sicre--Lorge Tristan.
 
-Things you may want to cover:
+## Testing the Code
+This is a Rails API-only application. Most responses require parameters to be passed either in the form of json or in the URL. Thus, it is recommended that the code be tested on Postman.
 
-* Ruby version
+### Testing Locally
+Ruby Version: 2.4.3
+Rails Version: 5.1.6
 
-* System dependencies
+Run the following code. Then navigate to```http://localhost:3000/```.
+```ruby
+rails db:migrate
+rails db:seed
+rails s
+```
 
-* Configuration
+### Testing on the Web(?)
+[http://18.221.77.15/]
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Tests
+ | URL | Parameters | Response
+--- | --- | --- | ---
+1 | [http://18.221.77.15/api/v1/profiles] | N/A | profiles of all users
