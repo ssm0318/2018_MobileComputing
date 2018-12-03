@@ -17,9 +17,9 @@ rails s
 ```
 
 ### Testing on the Web(?)
-[http://18.221.77.15/]
+Navigate to [http://18.221.77.15/] instead.
 
 ### Tests
- | URL | Parameters | Response
+Number | URL | Parameters | Response
 --- | --- | --- | ---
 1 | [http://18.221.77.15/api/v1/profiles] | N/A | profiles of all users
