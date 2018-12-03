@@ -17,9 +17,11 @@ rails s
 ```
 
 ### Testing on the Web(?)
-Navigate to [http://18.221.77.15/] instead.
+Navigate to http://18.221.77.15/ instead.
 
 ### Tests
+Viewing the responses using a Json parser may be helpful. ```http://json.parser.online.fr/```
 Number | URL | Parameters | Response
 --- | --- | --- | ---
-1 | [http://18.221.77.15/api/v1/profiles] | N/A | profiles of all users
+1 | http://18.221.77.15/api/v1/profiles | N/A | profiles of all users
+2 | http://18.221.77.15/api/v1/profiles/:id | id of user data to be displayed | profile of a specific user
