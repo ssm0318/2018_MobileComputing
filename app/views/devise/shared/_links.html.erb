@@ -14,14 +14,14 @@
           <% else %>
             <% sns = 'Kakao' %>
           <% end %>
-          Sign in with <%= sns %>
+          Register/Sign in with <%= sns %>
         </button>
       <% end -%>
     <% end -%>
   </div>
 <% end -%>
 <%- if controller_name != 'sessions' %>
-    <%= link_to "Sign in", new_session_path(resource_name) %>
+    <%= link_to "Already have an account? Sign in", new_session_path(resource_name) %>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>

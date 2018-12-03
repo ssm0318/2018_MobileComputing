@@ -29,4 +29,5 @@ Number | URL | Parameters | Method | Response
 2 | /api/v1/profiles/:id | id(int) of user data to be displayed | GET | profile of a specific user
 3 | /api/v1/events | N/A | GET | info on all events
 4 | /api/v1/profiles/:id | id(int) of event data to be displayed | GET | info on a specific event
-5 | /users/sign_in | N/A | GET | sign in page
+5 | /register/info | N/A | GET | sign in (existing user)/up (new user)
+6 | /visitor/main | N/A | GET | sign out
