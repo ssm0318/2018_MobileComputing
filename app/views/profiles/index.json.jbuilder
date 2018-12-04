@@ -1,17 +1,17 @@
 
-json.profiles @profiles do |profile|
-    json.id profile.id
-    json.name profile.name
-    json.age profile.age
-    json.description profile.description
-    json.tag profile.tags do |tag|
-        json.tag_content tag.content
+json.host_profiles @profiles do |profile|
+    json.host_id profile.id
+    json.host_name profile.name
+    json.host_age profile.age
+    json.host_description profile.description
+    json.host_tag profile.tags do |tag|
+        json.host_tag_content tag.content
     end
-    json.address profile.address
+    json.host_address profile.address
     json.profile_longitude profile.profile_longitude
     json.profile_latitude profile.profile_latitude
     json.profile_pic profile.profile_pic
-    json.isVerified profile.isVerified
+    json.host_isVerified profile.isVerified
     json.future_events profile.user.events do |event|
         if event.hosted.nil?
             json.event_id event.id
@@ -32,10 +32,10 @@ json.profiles @profiles do |profile|
             json.event_isHosted event.hosted
         end
     end
-    json.reviews profile.user.received_reviews do |review|
+    json.host_reviews profile.user.received_reviews do |review|
         json.reviewed_by review.author.profile.name
         json.reviewer_profile_pic profile.profile_pic
-        json.rating review.rating
-        json.content review.content
+        json.review_rating review.rating
+        json.review_content review.content
     end
 end

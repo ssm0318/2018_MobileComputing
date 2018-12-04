@@ -1,9 +1,9 @@
-json.id @event.id
-json.title @event.title
-json.description @event.description
-json.location @event.location
-json.chatlink @event.chatlink
-json.hosted @event.hosted
+json.event_id @event.id
+json.event_title @event.title
+json.event_description @event.description
+json.event_location @event.location
+json.event_chatlink @event.chatlink
+json.event_hosted @event.hosted
 json.host_profile do
     json.host_id @event.host.profile.id
     json.host_name @event.host.profile.name
@@ -19,8 +19,8 @@ json.host_profile do
     json.host_isVerified @event.host.profile.isVerified
     json.host_reviews @event.host.profile.user.received_reviews do |review|
         json.reviewed_by review.author.profile.name
-        json.reviewer_profile_pic review.author.profile.profile_pic
-        json.rating review.rating
-        json.content review.content
+        json.reviewer_profile_pic review.author.profile.profile_pic.to_s
+        json.review_rating review.rating
+        json.review_content review.content
     end
 end

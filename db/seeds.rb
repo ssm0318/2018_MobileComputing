@@ -12,7 +12,7 @@ chooseBool = [true, false]
 for i in 1..5
     Profile.create({ user_id: i, name: Faker::Friends.character, age: rand(18...33), description: Faker::FamousLastWords.last_words,
                     address: Faker::Address.city, profile_longitude: Faker::Address.longitude, profile_latitude: Faker::Address.latitude, isVerified: chooseBool.sample,
-                    gender: genders.sample, language: languages.sample, profile_pic: "http://18.221.77.15/uploads/profile/profile_pic/1/profile" + i.to_s + ".png" })
+                    gender: genders.sample, language: languages.sample, profile_pic: "/uploads/profile/profile_pic/1/profile" + i.to_s + ".png" })
 end
 
 # Events
