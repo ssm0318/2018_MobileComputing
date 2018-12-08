@@ -31,7 +31,7 @@ class User < ApplicationRecord
   # profile
   has_one     :profile, dependent: :destroy
 
-
+  after_create :create_profile
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
@@ -65,5 +65,11 @@ class User < ApplicationRecord
 
   def email_required?
     false
+  end
+
+  private
+
+  def create_profile
+      Profile.create(user_id: self.id)
   end
 end

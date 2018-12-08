@@ -9,10 +9,11 @@ User.create(email: "e@e.com", password: "eeeeee", nickname: "electricity")
 genders = ["F", "M"]
 languages = ["Korean", "English", "Mandarin Chinese", "Hindi", "Spanish", "Arabic", "French", "Malay", "Russian", "German", "Japanese", "Turkish", "Vietnamese", "Thai"]
 chooseBool = [true, false]
-for i in 1..5
-    Profile.create({ user_id: i, name: Faker::Friends.character, age: rand(18...33), description: Faker::FamousLastWords.last_words,
-                    address: Faker::Address.city, profile_longitude: Faker::Address.longitude, profile_latitude: Faker::Address.latitude, isVerified: chooseBool.sample,
-                    gender: genders.sample, language: languages.sample, profile_pic: "/uploads/profile/profile_pic/1/profile" + i.to_s + ".png" })
+5.times do |i|
+    p = Profile.find(i+1)
+    p.update({ name: Faker::Friends.character, age: rand(18...33), description: Faker::FamousLastWords.last_words,
+               address: Faker::Address.city, profile_longitude: Faker::Address.longitude, profile_latitude: Faker::Address.latitude, isVerified: chooseBool.sample,
+               gender: genders.sample, language: languages.sample, profile_pic: "/uploads/profile/profile_pic/1/profile" + (i+1).to_s + ".png" })
 end
 
 # Events
@@ -77,9 +78,9 @@ Follow.create(follower_id: 2, following_id: 1)
 Follow.create(follower_id: 4, following_id: 1)
 
 # Tags
-for i in 1..5
+8.times do |i|
     rand(1...10).times do
-        User.find(i).profile.tags << Tag.create(profile_id: i, content: Faker::SiliconValley.company)
+        Event.find(i+1).tags << Tag.create(event_id: (i+1), content: Faker::SiliconValley.company)
     end
 end
 

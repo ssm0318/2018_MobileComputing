@@ -10,13 +10,19 @@ Rails.application.routes.draw do
 
   namespace 'api' do
     namespace 'v1' do
+      # events
       resources :events
+      get '/events/search/:keyword/' => 'events#search', as: :search, defaults: { format: :csv }
+      get '/events/request/:event_id/:requester_id/' => 'events#event_request'
+      get '/events/accept/:event_id/:user_id/' => 'events#accept_event_request'
+      get '/events/bookmark/:user_id/:event_id/' => 'events#bookmark'
+      
+      # profiles
       get '/profiles' => 'profiles#index'
-      get '/profiles/:id' => 'profiles#show'
+      get '/profiles/:id/' => 'profiles#show'
       patch '/profiles/:id/edit' => 'profiles#update', as: :profile_update
-      get '/events/search/:keyword' => 'events#search', as: :search, defaults: { format: :csv }
-      get '/events/request/:event_id/:requester_id' => 'events#event_request'
-      # get '/profiles/search' => 'profiles#search', as: :search, defaults: { format: :csv }
+      post '/profiles/:id/reviews' => 'profiles#review'
+      get '/profiles/follow/:follower_id/:following_id' => 'profiles#follow'
     end
   end
 end

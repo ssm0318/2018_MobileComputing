@@ -1,7 +1,7 @@
 module Api
     module V1
         class ProfilesController < ApplicationController    
-            before_action :set_user, only: [:show, :update]
+            before_action :set_user, only: [:show, :update, :destroy]
             
             def update
                 if @profile.update_attributes(profile_params)
@@ -21,13 +21,31 @@ module Api
                 render 'profiles/show.json'
             end
 
-            def search
-                @keyword = params[:keyword]
-                @location = params[:location]
-                profileSearch = Profile.order('created_at DESC')
-                profileSearch = profileSearch.search_profile(@keyword).distinct if @keyword.present?
+            # def search
+            #     @keyword = params[:keyword]
+            #     @location = params[:location]
+            #     profileSearch = Profile.order('created_at DESC')
+            #     profileSearch = profileSearch.search_profile(@keyword).distinct if @keyword.present?
 
-                render json: {status: 'SUCCESS', message:'search results', data: profileSearch}, status: :ok
+            #     render json: {status: 'SUCCESS', message:'search results', data: profileSearch}, status: :ok
+            # end
+
+            def review
+                host_id = params[:id]
+                author_id = parmas[:author_id]
+                rating = params[:rating]
+                content = params[:content]
+                review = Review.create(host_id: host_id, author_id: author_id, rating: rating, content: content)
+
+                render json: {status: 'SUCCESS', message: 'review submitted', data: review}, status: :ok
+            end
+
+            def follow
+                follower_id = params[:follower_id]
+                following_id = parmas[:following_id]
+                follow = Follow.create(follower_id: follower_id, following_id: following_id)
+
+                render json: {status: 'SUCCESS', message: 'follow user', data: follow}, status: :ok
             end
         
             private
@@ -36,7 +54,7 @@ module Api
                 end
         
                 def profile_params
-                    params.require(:user).permit(:id, :user_id, :name, :age, :description, :tag, :address, :profile_longitude, :profile_latitude, :profile_pic, :isVerified)
+                    params.require(:user).permit(:id, :user_id, :name, :age, :gender, :language, :description, :address, :profile_longitude, :profile_latitude, :profile_pic, :isVerified)
                 end
         end
     end

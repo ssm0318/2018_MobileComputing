@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181203164957) do
+ActiveRecord::Schema.define(version: 20181208213053) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -39,15 +39,6 @@ ActiveRecord::Schema.define(version: 20181203164957) do
     t.index ["requester_id"], name: "index_event_requests_on_requester_id"
   end
 
-  create_table "event_waitings", force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "waiter_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_waitings_on_event_id"
-    t.index ["waiter_id"], name: "index_event_waitings_on_waiter_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.integer "host_id", null: false
     t.string "title", null: false
@@ -59,8 +50,16 @@ ActiveRecord::Schema.define(version: 20181203164957) do
     t.datetime "hosted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tag_raw"
     t.index ["event_longitude", "event_latitude"], name: "index_events_on_event_longitude_and_event_latitude"
     t.index ["host_id"], name: "index_events_on_host_id"
+  end
+
+  create_table "events_tags", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "tag_id", null: false
+    t.index ["event_id", "tag_id"], name: "index_events_tags_on_event_id_and_tag_id"
+    t.index ["tag_id", "event_id"], name: "index_events_tags_on_tag_id_and_event_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -116,13 +115,6 @@ ActiveRecord::Schema.define(version: 20181203164957) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "profiles_tags", id: false, force: :cascade do |t|
-    t.integer "profile_id", null: false
-    t.integer "tag_id", null: false
-    t.index ["profile_id", "tag_id"], name: "index_profiles_tags_on_profile_id_and_tag_id"
-    t.index ["tag_id", "profile_id"], name: "index_profiles_tags_on_tag_id_and_profile_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer "host_id", null: false
     t.integer "author_id", null: false
@@ -135,16 +127,17 @@ ActiveRecord::Schema.define(version: 20181203164957) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.integer "profile_id"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_tags_on_profile_id"
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_tags_on_event_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -155,7 +148,7 @@ ActiveRecord::Schema.define(version: 20181203164957) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "nickname"
-    t.string "email"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
