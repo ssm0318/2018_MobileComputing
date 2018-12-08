@@ -41,6 +41,7 @@ Number | URL | Parameters | Method | Response
 4 | /api/v1/profiles/:id | ID(int) of event data to be displayed | GET | info on a specific event
 5 | /register/info | N/A | GET | sign in (existing user)/up (new user)
 6 | /visitor/main | N/A | GET | sign out (if signed in)
+7 | /events/search/:keyword | search keyword | GET | search events that match keyword (in the title or description)
 
 ### Sub Functionalities (Events)
 Number | URL | Parameters | Method | Response
