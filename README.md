@@ -44,18 +44,18 @@ Number | URL | Parameters | Method | Response
 7 | /events/search/:keyword | search keyword | GET | search events that match keyword (in the title, tags, or description)
 
 ### Sub Functionalities (Events)
-Number | URL | Parameters | Method | Response
+Number | URL (/api/v1/events) | Parameters | Method | Response
 --- | --- | --- | --- | ---
-1 | /api/v1/events | event parameters | POST | create new event
-2 | /api/v1/events/:id/ | ID(int) of event, event parameters | PATCH | update specific event
-3 | /api/v1/events/request/:event_id/:requester_id/ | ID(int) of event and requester | GET | create a request to join event
-4 | /api/v1/events/accept/:event_id/:user_id/ | ID(int) of event and user | GET | accept a user who requested to join event
-5 | /api/v1/events/bookmark/:user_id/:event_id/ | ID(int) of event and user | GET | create a bookmark of an event for a user
+1 | / | event parameters | POST | create new event
+2 | /:id/ | ID(int) of event, event parameters | PATCH | update specific event
+3 | /request/:event_id/:requester_id/ | ID(int) of event and requester | GET | create a request to join event
+4 | /accept/:event_id/:user_id/ | ID(int) of event and user | GET | accept a user who requested to join event
+5 | /bookmark/:user_id/:event_id/ | ID(int) of event and user | GET | create a bookmark of an event for a user
 
 ### Sub Functionalities (Users)
-Number | URL | Parameters | Method | Response
+Number | URL (/api/v1/profiles) | Parameters | Method | Response
 --- | --- | --- | --- | ---
-1 | /api/v1/profiles/:id/edit | ID(int) of profile, profile parameters | PATCH | update profile of specific user
-2 | /api/v1/profiles/:id/reviews | ID(int) of user to be interviewed | POST | create a review on a user
-3 | /api/v1/profiles/follow/:follower_id/:following_id | ID(int) of follower and the followed | GET | user follows another user
-4 | /api/v1/profiles/match/:id/ | ID(int) of current user (REQUIRED), [gender, language, location] (OPTIONAL) | POST | match users
+1 | /:id/edit | ID(int) of profile, profile parameters | PATCH | update profile of specific user
+2 | /:id/reviews | ID(int) of user to be interviewed | POST | create a review on a user
+3 | /follow/:follower_id/:following_id | ID(int) of follower and the followed | GET | user follows another user
+4 | /match/:id/ | ID(int) of current user (REQUIRED), [gender, language, location] (OPTIONAL) | POST | match users
