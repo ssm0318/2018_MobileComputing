@@ -45,7 +45,10 @@ class User < ApplicationRecord
         if user.nil?
           if auth.provider == "kakao"
             user = User.create(password: Devise.friendly_token[0,20])
-            profile = Profile.create(user_id: user.id, profile_pic: auth.info.image, isVerified: true)
+            profile = Profile.find(user.id)
+            profile.profile_pic = auth.info.image.to_s
+            profile.isVerified = true
+            profile.save
           end
         end
       end
