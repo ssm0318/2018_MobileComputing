@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get '/events/request/:event_id/:requester_id/' => 'events#event_request'
       get '/events/accept/:event_id/:user_id/' => 'events#accept_event_request'
       get '/events/bookmark/:user_id/:event_id/' => 'events#bookmark'
+      get '/events/hosted/:id/' => 'events#hosted'
       
       # profiles
       get '/profiles' => 'profiles#index'

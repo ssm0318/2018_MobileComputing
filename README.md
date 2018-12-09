@@ -51,6 +51,7 @@ Number | URL (/api/v1/events) | Parameters | Method | Response
 3 | /request/:event_id/:requester_id/ | ID(int) of event and requester | GET | create a request to join event
 4 | /accept/:event_id/:user_id/ | ID(int) of event and user | GET | accept a user who requested to join event
 5 | /bookmark/:user_id/:event_id/ | ID(int) of event and user | GET | create a bookmark of an event for a user
+6 | /hosted/:id/ | ID(int) of hosted event | GET | mark event as hosted and increment exp
 
 ### Sub Functionalities (Users)
 Number | URL (/api/v1/profiles) | Parameters | Method | Response

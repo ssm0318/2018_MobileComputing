@@ -88,7 +88,7 @@ module Api
                 render json: {status: 'SUCCESS', message: 'event accept', data: bookmark}, status: :ok
             end
 
-            def hosted
+            def hosted 
                 event_id = params[:id]
                 e = Event.find(event_id)
                 exp = e.exp

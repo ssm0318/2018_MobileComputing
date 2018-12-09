@@ -4,7 +4,7 @@ json.event_description @event.description
 json.event_location @event.location
 json.event_chatlink @event.chatlink
 json.event_hosted @event.hosted
-json.event_tag event.tags do |tag|
+json.event_tag @event.tags do |tag|
     json.event_tag_content tag.content
 end
 json.host_profile do
