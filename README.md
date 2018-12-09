@@ -58,3 +58,4 @@ Number | URL | Parameters | Method | Response
 1 | /api/v1/profiles/:id/edit | ID(int) of profile, profile parameters | PATCH | update profile of specific user
 2 | /api/v1/profiles/:id/reviews | ID(int) of user to be interviewed | POST | create a review on a user
 3 | /api/v1/profiles/follow/:follower_id/:following_id | ID(int) of follower and the followed | GET | user follows another user
+4 | /api/v1/profiles/match/:id/ | ID(int) of current user (REQUIRED), [gender, language, location] (OPTIONAL) | POST | match users

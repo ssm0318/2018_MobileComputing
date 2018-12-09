@@ -65,11 +65,11 @@ EventAttending.create(event_id: 6, user_id: 2)
 EventAttending.create(event_id: 7, user_id: 1)
 
 # Reviews
-Review.create(host_id: 1, author_id: 2, rating: rand(1...6), content: Faker::Simpsons.quote)
-Review.create(host_id: 1, author_id: 3, rating: rand(1...6), content: Faker::Simpsons.quote)
-Review.create(host_id: 2, author_id: 4, rating: rand(1...6), content: Faker::Simpsons.quote)
-Review.create(host_id: 2, author_id: 1, rating: rand(1...6), content: Faker::Simpsons.quote)
-Review.create(host_id: 3, author_id: 5, rating: rand(1...6), content: Faker::Simpsons.quote)
+Review.create(host_id: 1, author_id: 2, rating: rand(1..5), content: Faker::Simpsons.quote)
+Review.create(host_id: 1, author_id: 3, rating: rand(1..5), content: Faker::Simpsons.quote)
+Review.create(host_id: 2, author_id: 4, rating: rand(1..5), content: Faker::Simpsons.quote)
+Review.create(host_id: 2, author_id: 1, rating: rand(1..5), content: Faker::Simpsons.quote)
+Review.create(host_id: 3, author_id: 5, rating: rand(1..5), content: Faker::Simpsons.quote)
 
 # Follows
 Follow.create(follower_id: 1, following_id: 2)
@@ -79,8 +79,15 @@ Follow.create(follower_id: 4, following_id: 1)
 
 # Tags
 8.times do |i|
-    rand(1...10).times do
-        Event.find(i+1).tags << Tag.create(event_id: (i+1), content: Faker::SiliconValley.company)
+    rand(1..10).times do
+        Event.find(i+1).tags << Tag.create(event_id: (i+1), content: Faker::Food.dish)
+    end
+end
+
+# Profile Tags
+5.times do |i|
+    rand(1..10).times do
+        Profile.find(i+1).profile_tags << ProfileTag.create(profile_id: (i+1), content: Faker::Nation.nationality)
     end
 end
 

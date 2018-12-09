@@ -11,5 +11,7 @@ class Event < ApplicationRecord
     has_many   :event_waitings
     has_and_belongs_to_many     :tags, dependent: :destroy
 
-    scope :search_event, -> (keyword) { joins(:tags).where("content LIKE ? ", "%#{keyword}%") or wehre('title LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%") }
+    scope :search_content, -> (keyword) { where('title LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%") }
+    scope :search_tag, -> (keyword) { joins(:tags).where("content LIKE ? ", "%#{keyword}%") }
+    # scope :search_keyword, -> (keyword) { joins(:tags).where("content LIKE ? ", "%#{keyword}%") or where('title LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%") }
 end

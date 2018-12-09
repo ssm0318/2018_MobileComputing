@@ -54,7 +54,12 @@ module Api
             def search
                 @keyword = params[:keyword]
                 event_search = Event.order('created_at DESC')
-                event_search = event_search.search_event(@keyword).distinct if @keyword.present?
+                if @keyword.present?
+                    content = event_search.search_content(@keyword)
+                    tag = event_search.search_tag(@keyword)
+                    event_search = content + tag
+                    event_search = event_search.uniq
+                end
 
                 render json: {status: 'SUCCESS', message:'search results', data: event_search}, status: :ok
             end
@@ -81,6 +86,15 @@ module Api
                 bookmark = Bookmark.create(event_id: event_id, user_id: user_id)
 
                 render json: {status: 'SUCCESS', message: 'event accept', data: bookmark}, status: :ok
+            end
+
+            def hosted
+                event_id = params[:id]
+                e = Event.find(event_id)
+                exp = e.exp
+                e.update(exp: exp + 1)
+
+                render json: {status: 'SUCCESS', message: 'event accept', data: e}, status: :ok
             end
 
             private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181208213053) do
+ActiveRecord::Schema.define(version: 20181209001039) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -93,6 +93,19 @@ ActiveRecord::Schema.define(version: 20181208213053) do
     t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
   end
 
+  create_table "profile_tags", force: :cascade do |t|
+    t.integer "profile_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profile_tags_on_profile_id"
+  end
+
+  create_table "profile_tags_profiles", id: false, force: :cascade do |t|
+    t.integer "profile_tag_id", null: false
+    t.integer "profile_id", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name"
@@ -108,6 +121,9 @@ ActiveRecord::Schema.define(version: 20181208213053) do
     t.string "profile_pic"
     t.string "gender"
     t.string "language"
+    t.integer "exp"
+    t.integer "match_score"
+    t.string "profile_tag_raw"
     t.index ["gender"], name: "index_profiles_on_gender"
     t.index ["language"], name: "index_profiles_on_language"
     t.index ["profile_longitude", "profile_latitude"], name: "index_profiles_on_profile_longitude_and_profile_latitude"

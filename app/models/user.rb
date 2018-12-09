@@ -41,10 +41,6 @@ class User < ApplicationRecord
       email = auth.info.email
       user = User.where(:email => email).first
 
-      puts '=-=================================='
-      puts email
-      puts '======================================'
-
       unless self.where(email: auth.info.email).exists?
         if user.nil?
           if auth.provider == "kakao"
@@ -70,6 +66,6 @@ class User < ApplicationRecord
   private
 
   def create_profile
-      Profile.create(user_id: self.id)
+      Profile.create(user_id: self.id, exp: 0.01)
   end
 end
