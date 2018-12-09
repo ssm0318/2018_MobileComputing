@@ -2,7 +2,6 @@
 
 This project is developed by Ekatrina Levchenko, JaeWon Kim, Sicre--Lorge Tristan.
 
----
 
 ## Backend
 
