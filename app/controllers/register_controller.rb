@@ -10,6 +10,8 @@ class RegisterController < ApplicationController
       @user.nickname = params[:nickname]
       @user.email = params[:email]
       @user.save
+      @user.profile.name = params[:nickname]
+      @user.profile.save
     end
     redirect_to visitor_main_path
   end

@@ -5,7 +5,7 @@ class Profile < ApplicationRecord
                    :lat_column_name => :profile_latitude,
                    :lng_column_name => :profile_longitude
 
-  # mount_uploader              :profile_pic, ProfilePicUploader
+  mount_uploader              :profile_pic, ProfilePicUploader
   belongs_to                  :user
   has_and_belongs_to_many     :profile_tags, dependent: :destroy
 
