@@ -2,7 +2,7 @@ module Api
     module V1
         class ProfilesController < ApplicationController    
             before_action :set_user, only: [:show, :update, :destroy, :update]
-            
+
             def update
                 if @profile.update_attributes(profile_params)
                     @profile.profile_tags.destroy_all if !@profile.profile_tags.nil?
@@ -27,6 +27,11 @@ module Api
             def show
                 @profile = @user.profile
                 render 'profiles/show.json'
+            end
+
+            def mypage
+                @profile = current_user.profile
+                render 'profiles/mypage.json'
             end
 
             # def search

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       
       # profiles
       get '/profiles' => 'profiles#index'
+      get '/profiles/mypage' => 'profiles#mypage'
       get '/profiles/:id/' => 'profiles#show'
       patch '/profiles/:id/edit' => 'profiles#update', as: :profile_update
       post '/profiles/:id/reviews' => 'profiles#review'
