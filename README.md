@@ -60,3 +60,4 @@ Number | URL (/api/v1/profiles) | Parameters | Method | Response
 2 | /:id/reviews | ID(int) of user to be interviewed | POST | create a review on a user
 3 | /follow/:follower_id/:following_id | ID(int) of follower and the followed | GET | user follows another user
 4 | /match/:id/ | ID(int) of current user (REQUIRED), [gender, language, location] (OPTIONAL) | POST | match users
+5 | /mypage | N/A | GET | show profile of currently sign in user
