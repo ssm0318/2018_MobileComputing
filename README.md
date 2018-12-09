@@ -1,6 +1,10 @@
-# Help to Help - Backend
+# Help to Help
 
 This project is developed by Ekatrina Levchenko, JaeWon Kim, Sicre--Lorge Tristan.
+
+---
+
+## Backend
 
 ### DB Structure
 https://github.com/ssm0318/help_to_help_back/issues/9#issue-386932804
