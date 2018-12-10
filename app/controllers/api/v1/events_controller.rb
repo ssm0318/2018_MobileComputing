@@ -1,7 +1,7 @@
 module Api
     module V1 
         class EventsController < ApplicationController
-            before_action :authenticate_user!, except: [:index, :show, :search]
+            before_action :authenticate_user!, except: [:index, :show, :search, :create, :update]
             before_action :set_event, only: [:show, :update, :destroy]
             include Geokit::Geocoders
 
