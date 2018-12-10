@@ -49,7 +49,7 @@ Number | URL | Parameters | Method | Response
 ### Sub Functionalities (Events)
 Number | URL (/api/v1/events) | Parameters | Method | Response
 --- | --- | --- | --- | ---
-1 | / | event parameters | POST | create new event
+1 | / | event parameters (host ID and title required) | POST | create new event
 2 | /:id/ | ID(int) of event, event parameters | PATCH | update specific event
 3 | /request/:event_id/:requester_id/ | ID(int) of event and requester | GET | create a request to join event
 4 | /accept/:event_id/:user_id/ | ID(int) of event and user | GET | accept a user who requested to join event
