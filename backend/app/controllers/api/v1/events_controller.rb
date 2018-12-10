@@ -3,6 +3,7 @@ module Api
         class EventsController < ApplicationController
             before_action :authenticate_user!, except: [:index, :show, :search]
             before_action :set_event, only: [:show, :update, :destroy]
+            include Geokit::Geocoders
 
             def index
                 @events = Event.order('created_at DESC')
@@ -14,19 +15,33 @@ module Api
             end
         
             def create
-                event = Event.new(event_params)
-                input_tag = event.tag_raw
-                input_tag = input_tag.gsub(", ", ",")
-                tag_array = input_tag.split(',')
-                tag_array.each do |tag|
-                    new_tag = Tag.create(event_id: event.id, content: tag)
-                    event.tags << new_tag
+                @event = Event.create(host_id: params[:host_id], title: params[:title])
+                @event.description = params[:description] if params[:description].present?
+                if params[:location].present?
+                    loc = GoogleGeocoder.geocode(params[:location]) 
+                    @event.location = loc.full_address
+                    @event.event_longitude = loc.lng
+                    @event.event_latitude = loc.lat
+                end
+                @event.chatlink = params[:chatlink] if params[:chatlink].present?
+                @event.hosted = false
+                @event.tag_raw = params[:tag_raw] if params[:tag_raw].present?
+                @event.save 
+
+                if params[:tag_raw].present?
+                    input_tag = @event.tag_raw
+                    input_tag = input_tag.gsub(", ", ",")
+                    tag_array = input_tag.split(',')
+                    tag_array.each do |tag|
+                        new_tag = Tag.create(event_id: @event.id, content: tag)
+                        @event.tags << new_tag
+                    end
                 end
         
-                if event.save
-                    render json: {status: 'SUCCESS', message:'Saved event', data: event}, status: :ok
+                if @event.save
+                    render json: {status: 'SUCCESS', message:'Created event', data: @event}, status: :ok
                 else
-                    render json: {status: 'ERROR', message:'Event not saved', data: event.errors.full_messages}, status: :unprocessable_entity
+                    render json: {status: 'ERROR', message:'Event not saved', data: @event.errors.full_messages}, status: :unprocessable_entity
                 end
             end
         
@@ -36,7 +51,18 @@ module Api
             end
         
             def update
-                if @event.update_attributes(event_params)
+                @event.description = params[:description] if params[:description].present?
+                if params[:location].present?
+                    loc = GoogleGeocoder.geocode(params[:location]) 
+                    @event.location = loc.full_address
+                    @event.event_longitude = loc.lng
+                    @event.event_latitude = loc.lat
+                end
+                @event.chatlink = params[:chatlink] if params[:chatlink].present?
+                @event.hosted = false
+                @event.tag_raw = params[:tag_raw] if params[:tag_raw].present?
+
+                if params[:tag_raw].present?
                     @event.tags.destroy_all
                     input_tag = @event.tag_raw
                     input_tag = input_tag.gsub(", ", ",") # windows에서는 \r\n인데 mac에서는 \n이다.
@@ -45,6 +71,9 @@ module Api
                         new_tag = Tag.create(event_id: @event.id, content: tag)
                         @event.tags << Tag.find(new_tag.id)
                     end
+                end
+
+                if @event.save
                     render json: {status: 'SUCCESS', message:'Updated event', data: @event}, status: :ok
                 else
                     render json: {status: 'ERROR', message:'Event not updated', data: @event.errors.full_messages}, status: :unprocessable_entity
