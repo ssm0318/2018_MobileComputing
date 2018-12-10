@@ -1,3 +1,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/FrogTravel/HelptoHelp-android.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/ssm0318/help_to_help.git
