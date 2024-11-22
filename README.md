@@ -1,7 +1,8 @@
 # Help to Help
 
-This project is developed by Ekatrina Levchenko, JaeWon Kim, Sicre--Lorge Tristan.
+This project is developed by Ekatrina Levchenko, JaeWon Kim, Sicre--Lorge Tristan.  
 
+Final Score: A+  
 
 ## Backend
 
