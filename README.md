@@ -1,6 +1,6 @@
-# Help to Help
+# 2018_MobileComputing
 
-This project is developed by Ekatrina Levchenko, JaeWon Kim, Sicre--Lorge Tristan.  
+Ekatrina Levchenko, JaeWon Kim, Sicre--Lorge Tristan.  
 
 Final Score: A+  
 
